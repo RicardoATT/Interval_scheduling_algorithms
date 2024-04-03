@@ -27,7 +27,7 @@ import tkinter as TK
 import tkinter.font as font
 import time
 
-#Generador de numeros random por medio de Linear Congruence Generator (LCG)
+# Generador de numeros random por medio de Linear Congruence Generator (LCG)
 def NumeroRandomLCG(min,max):
     global rand
     max += 1
@@ -37,13 +37,8 @@ def NumeroRandomLCG(min,max):
     prob = rand/m
     return int(((max-min)*(prob)) + min)
 
-#Generador de intervalos
+# Generador de intervalos
 def GeneradorDeInstancias(n):
-    global LongitudMin
-    global LongitudMax
-    global PesoMin
-    global PesoMax
-    global TiempoMax
     planificacion = []
     for i in range(n):
         start = NumeroRandomLCG(0,TiempoMax)
@@ -52,7 +47,7 @@ def GeneradorDeInstancias(n):
         planificacion.append((start,end,weight))
     return planificacion
 
-#Merge sort u ordenamiento por mezcla O(n log n)
+# Merge sort u ordenamiento por mezcla O(n log n)
 def Mezclar(arr, l, m, r):
     n1 = m - l + 1
     n2 = r - m
@@ -110,14 +105,9 @@ def GraficarIntervalos(G):
     # Dibujar el gráfico de los intervalos e imrpimirlos en la consola
     plt.show()
 
-#Gráficas de pesos de la solución y tiempos de ejecuación
+# Gráficas de pesos de la solución y tiempos de ejecuación
 def GraficarSoluciones(Entradas,p_S1,p_S2,p_S3,max_S1,max_S2,max_S3,min_S1,min_S2,min_S3,Titulo,EjeY):
     #Esto es para visualizar de mejor manera las curvas
-    '''for i in range(len(Entradas)):
-        if Titulo == "Pesos de la solución":
-            p_S3[i] += 1
-        else:
-            p_S3[i] += 0.001'''
 
     if Titulo == "Pesos de la solución":
         FigV = plt.figure("Soluciones de pesos promedios")
@@ -180,7 +170,6 @@ def GraficarSoluciones(Entradas,p_S1,p_S2,p_S3,max_S1,max_S2,max_S3,min_S1,min_S
 
 # Generación de lista de actividades compatibles de cada intervalo
 def TrabajosCompatibles():
-    global G
     P = [0]*len(G)
     for i in range(len(G)):
         for j in range(i-1,-1,-1):
@@ -190,7 +179,6 @@ def TrabajosCompatibles():
     return P
 
 def AlgoritmoVoraz():
-    global G
     SolucionVoraz = []
     Peso = 0
     for j in G:
@@ -203,16 +191,12 @@ def AlgoritmoVoraz():
     return Peso
 
 def PDSinMemo(j):
-    global G
-    global P
     if j == -1:
         return 0
     else:
         return max(G[j][2] + PDSinMemo((P[j])-1), PDSinMemo(j-1))
 
 def PDBottomUp():
-    global G
-    global P
     M = [0]*(len(G)+1)
     M[1] = G[0][2]
     for j in range(1,len(G)+1):
@@ -231,8 +215,6 @@ def ObtenerValores():
     Entradas = [10, 50, 100, 200]
     Instancias = 10
     k = 0
-    Intervalos = []
-    IntervalosOrdenados = []
     ValoresPromediosS1 = [0]*len(Entradas)
     ValoresPromediosS2 = [0]*len(Entradas)
     ValoresPromediosS3 = [0]*len(Entradas)
@@ -316,8 +298,6 @@ def ObtenerValores():
         "Tiempo de ejecución","Tiempo (s)"]
 
 def MostrarValores():
-    global ParametrosGraficaV
-    global Intervalos
     if len(Intervalos) == 0:
         pass
     else:
@@ -326,8 +306,6 @@ def MostrarValores():
             ParametrosGraficaV[8],ParametrosGraficaV[9],ParametrosGraficaV[10],ParametrosGraficaV[11])
 
 def MostrarTiempos():
-    global ParametrosGraficaT
-    global Intervalos
     if len(Intervalos) == 0:
         pass
     else:
@@ -336,9 +314,6 @@ def MostrarTiempos():
             ParametrosGraficaT[8],ParametrosGraficaT[9],ParametrosGraficaT[10],ParametrosGraficaT[11])
 
 def MostrarIntervalos():
-    global Intervalos
-    global NumInt
-    global NumIns
     if len(Intervalos) == 0:
         pass
     else:
@@ -352,9 +327,6 @@ def MostrarIntervalos():
             GraficarIntervalos(Intervalos[NumIns-1])
 
 def MostrarIntervalosOrdenados():
-    global IntervalosOrdenados
-    global NumInt
-    global NumIns
     if len(IntervalosOrdenados) == 0:
         pass
     else:
