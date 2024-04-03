@@ -1,2 +1,2 @@
 # Interval_scheduling_algorithms
-En este repositorio se muestra un programa en Python para la resolución del problema de "Interval Scheduling" empleando diferentes paradigmas de programación. Con este proyecto, logre entrar a la Maestría en Ciencias de Ingeniería de Cómputo en el Centro de Investigación en Computación (CIC), del Instituto Politécnica Nacional.
+This repository shows a Python program to solve the "Interval Scheduling" problem using different algorithms. With this project, I was admitted to the Master of Science in Computer Engineering at the Computing Research Center (CIC), of the National Polytechnic Institute.
